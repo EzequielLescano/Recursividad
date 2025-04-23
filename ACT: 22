@@ -1,0 +1,22 @@
+# implementar una función recursiva llamada "usar_la_fuerza" que:
+
+# a. Saque los objetos de la mochila de a uno hasta encontrar un sable de luz o que no queden objetos.
+# b. Determine si hay un sable y cuántos objetos fueron necesarios sacar.
+# c. Usar un vector (lista) para representar la mochila.
+
+def usar_la_fuerza(mochila, i=0):
+    if i >= len(mochila):
+        return (False, i)
+    if mochila[i] == "sable de luz":
+        return (True, i + 1)
+    return usar_la_fuerza(mochila, i + 1)
+
+mochila = [
+    "botella", "comida", "manta", "sable de luz", "comunicador", "linterna"]
+
+encontro, cantidad = usar_la_fuerza(mochila)
+
+if encontro:
+    print(f"¡El sable fue encontrado después de sacar {cantidad} objetos!")
+else:
+    print("No hay sable en la mochila :(")
