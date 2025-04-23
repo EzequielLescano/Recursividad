@@ -1,0 +1,21 @@
+# Desarrollar una función recursiva que permita convertir
+# un número romano (como 'XIV') en su equivalente decimal (como 14)
+
+
+num_romano = {
+    'I': 1, 'V': 5, 'X': 10,
+    'L': 50, 'C': 100,
+    'D': 500, 'M': 1000}
+
+def cambio(romano):
+    if len(romano) == 0:
+        return 0
+    if len(romano) == 1:
+        return num_romano[romano]
+    
+    if num_romano[romano[0]] < num_romano[romano[1]]:
+        return num_romano[romano[1]] - num_romano[romano[0]] + cambio(romano[2])
+    else:
+        return num_romano[romano[0]] + cambio(romano[1])
+ 
+print(cambio("M"))
